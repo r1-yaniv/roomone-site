@@ -1,0 +1,25 @@
+<header class="nav" id="nav" data-nav>
+  <div class="wrap nav__inner">
+    <a class="logo" href="{{HOME_HREF}}" aria-label="RoomOne Ventures — home">
+      {{LOGO_MARK}}
+      <span class="logo__words">
+        <span class="logo__main">ROOMONE</span>
+        <span class="logo__sub">VENTURES</span>
+      </span>
+    </a>
+
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" data-nav-toggle>
+      <span class="sr-only">Menu</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+
+    <nav class="nav__links" id="nav-links" aria-label="Primary">
+      <a class="nav__link" href="{{HOME}}#how-it-works" data-nav-link="how-it-works">How it works</a>
+      <a class="nav__link" href="{{HOME}}#about" data-nav-link="about">About us</a>
+      <a class="nav__link" href="{{HOME}}#contact" data-nav-link="contact">Contact</a>
+      <span class="nav__action">
+        <a class="btn btn--primary" href="{{HOME}}#contact">Get started {{ARROW_RIGHT}}</a>
+      </span>
+    </nav>
+  </div>
+</header>

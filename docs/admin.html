@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin — RoomOne Ventures</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="RoomOne Ventures" />
+    <meta name="theme-color" content="#f6f3eb" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=f7387dc7" />
+  </head>
+  <body class="is-locked">
+    <!-- Page content lives in the encrypted payload below and is inserted here on unlock. -->
+    <div id="site" hidden></div>
+
+    <div class="gate" id="gate" hidden>
+      <div class="gate__panel">
+        <a class="logo" href="#" aria-label="RoomOne Ventures">
+          <svg class="logo__mark" viewBox="0 0 830 818" fill="currentColor" aria-hidden="true"><rect x="0" y="0" width="830" height="47"/><rect x="0" y="0" width="45" height="818"/><rect x="784" y="0" width="46" height="818"/><rect x="0" y="775" width="543" height="43"/><rect x="255" y="223" width="288" height="56"/><rect x="485" y="135" width="58" height="108"/><path d="M487 226L487 135L257 226Z"/><path fill-rule="evenodd" d="M384 270H543V818H384ZM504 530A30 30 0 1 1 444 530A30 30 0 1 1 504 530Z"/></svg>
+          <span class="logo__words">
+            <span class="logo__main">ROOMONE</span>
+            <span class="logo__sub">VENTURES</span>
+          </span>
+        </a>
+
+        <p class="kicker">Pre-release</p>
+        <h1 class="gate__title">This site isn't public yet.</h1>
+        <p class="gate__sub">RoomOne Ventures goes live shortly. Until then the pages are locked — enter the access key you were given to look around.</p>
+
+        <form class="gate__form" id="gate-form" novalidate>
+          <div class="gate__row">
+            <input
+              id="gate-input"
+              type="password"
+              name="access"
+              placeholder="Access key"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              aria-label="Access key"
+            />
+            <button class="btn btn--primary" type="submit">Enter <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          </div>
+          <p class="gate__msg" id="gate-msg" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="gate__foot">No key? Write to <a href="mailto:hello@roomone.ventures">hello@roomone.ventures</a>.</p>
+      </div>
+    </div>
+
+    <script id="payload" type="application/json">{"v":1,"iterations":250000,"salt":"NmSyXjMUELPwKnwoKMaJIw==","iv":"/VUfJ2PKeafxCAqT","content":"IuVSYDGqnnM/rAJFZFO0YrWNFsN/MMkRKYQHxspitWabzjUSl3W8isJHvBT41Y/1ZR2xKamMGs/opfECmpzVil2hc3KXW1FAsDD9EIm1hZ7crmON5mKrZF5cbjPWfCKhb2f0xlJ625Y17nRtUuZYaV4fJdOsNBQODNv687zgf0mLG94wPyjFrCn3VgkGKG5wF4HdXjFvdmmDPSFurLH8wcM2Tsdp2wxGFVjKXxeRcR/4GyhthmO9AgScvdQTiHJFSTCJgWzir7dcbHOJ0g+dsYdSkLo3kVRLKS8X2TUFaiTFBGDNzByxhc/y9ZtJ34+lEmVTOIiT0s6z7YXHuFy5nSpzJNtwHUZr7opjUMS4xPRhU8E7efOLlVUKA608QBkzMIq03zT7ZRZ1rD48x8x2CHsG4EnHqUOkf210Ju592tPVYLu1QQL40xvRcEvuslnY+xJCHHlcrXjEGBvrHgb6zGIsJsGctqOQHWhEUmy6w0NLi5w8FCBFWGeQeA2sziZCMwNPdaY0UCK1ixzV9R20WnJJHsCGyt3omMorNCeBBd9UwWUCcTOrcwu4Qdi4S1ZAol7Jo7DRsF69DxHdnvfaXsJV/XS8+bfYqx/BEVzCFU6hkSpUsxMycyVZhwasrRtA/4sBdyNKaP2Z007Sl2bBUamlXbV1CcVJSeRk8uho5Rul5mvkZUJ7+/0+aveBsyEugiFXtzHWSB//8cg2X46L7Ghm7fV7Rw3Zu/Iuj5DDbqgzAH/1jZxyD4tRMq5bsTXWjSUpDNcr2by/HY/zvbqkH8hONk71y1HMs8P9tjpROa3oJIIO5sczO9JKLEiBQ2E+8E43bjrO/RS0UxxOp243G7P/wa0hlIhA2doEuC2cCfWAIcTh3ESRcY19a7MjTzVEzkhP7w8EO9YbCMJxr03XPSiINOIiX/e7ptRQTCC4DzNtF4IGvm8mPa9QtkK/uOtvVy24CnBLSw04r/Ubp1hia+BJI9v5c+3YuSTdj9dWEntgtdpYrjN8ibtd9tmLN7WTx5+Y85pt7BxmPY5B5xk1x5mSGYxWdbTXLUQKyVJCBCHgpgnCti1IJl55aYgKxNVAntSKCsnWuGGYxkF23XCevU+tXZ3Umx1Wsp17HLwr6MiKzmSjhDHEO6EkEHhRqys+9FSdGCGs7zwIzUvL2/hXVZF2NT/M1Gm388HCVpOBrcYLnorF9bd5pyMRHPncuJYAuHMXHRYrQ/KFXxdM+ikwFiHVjs0xGU3C3CmNGZvtTvFSmOjYw4WT9GkyXcRBt1bDFGtG6r6YZj2DKB0lykVIktFXAnbNA6j9OfRnrALf2v3beo6AIY9ltZGHhQU47QKLIdgOsIbyQrIjAjZPIAGpDOW3KJVrikD8lpO5Zpm4Hn0/gTYV68MwnuACmcakrZ+nDKBiSKvPidru0pcRBj5EAtpR6VIM1ygxxd/U+moAaJ6R0l7GdAWEKlN4grxa35RbNUiv9zDhQsSHs4A3kCJHzbEAcW31io49ji9cHUdQbn2brBal8hrh8xgrOQM5AbwVBEtRclv0MMu8mazVibBsWvPILCUWc33cf3Q6QTmzx/yUs/En9pmDSlvcG9Tx332X728RgwWAQ6P7H1ggJ9fZFWkye0SS6Cw9x628H7bqjQPDMdOC1aivymUve87SBRc36ePzYnuz3YE98qncw/LYzaYddXpFvBnKO7pBTnwuhM3Gi7mq3M7LymgM1NX06Ws8Xflp71aLd5+u1Hd883ETeuTmkMJgXBxmHg6IzxWVSZUg0i65QewfUuywF1SwBx1oPotrTEEFEk9ObatfT3kngp15glecx0ZvzkdVhT/nfjCNlh9vt84BDtdrZoTRqEtlrLFuED/dk2c5egVGFollvqnyZhuSbpMqJ8/+2CtKcfM3vgB9lLkdVmdEQbAScu6VmQ6LD6kDgZXOko/2vbBlbzDbMEl/cdluuEraU+Mb756gTfi/rw3CUpPhnjeRGEgcZHHPpoBZ/AGVKepvvOHqy8jbILN5VNKmHpRceOZVWe2iYFSutFwDuZ9hByGu2lj7SSVrLrueRP5+SY0UrU/IIruBDx6IRXMyMweVakIpsDLVsdqVPS5r6dP8SsuxgyFRagK6HT9dxyHGRx8BKZ1WJMGNP84sKkuOHc7NuZBi8Lc4cq/6hpBMeQip1KIl3a+VwqUGV9nqbCjgPooeykPwg6NNn0zQxNqfcm/O/Or5dQp+2tBbGEpt/s8X+vMfn+IFjiJ1Spc7j07lQY6IaVTMbLt9kqg5VTtztEAtX0fcHvl0yhiESZMhm+MABHao6ArSUEWTNl4v/5ejPi/QMrZNeYrItlGsuYSSWBoiDJH4olt36iwAqmGyCqBr0M9ut9Oz/pglI4yEGXGizyDUkt5QpRyD6rJFctN1ZY9Xdkqwci/4p+MskPqzytnsppzamStPb3wY8goAdLNPMvCd3CWdumyKQy6QhTJu6EFiDJVIsmHbHgdwFFi+cRR96O/i85bKpuMQU7TJSmkNNaS+0aXSwRzF7ujEn5hVYU9VnfLfNiaJCD+eJRUJGBWhE9DnVqg4rJ3VSSkagMY8Q05AfDbA+T4pmO6E/8vK71/mER/AsD0KcF/ksm9hXoEQeFxpimR9JX9TKO/Svfv451S3um0ZhTDNzvC+CV4sHJX9izo+zEzNKyXPBE8krHhwsgFP3ciO1OpUMFjwUP9cruIfuzbLhSPiEy2X7w4abB04SszP"}</script>
+    <script src="app.js?v=691d034a"></script>
+    <script src="gate.js?v=74d39ccb"></script>
+  </body>
+</html>

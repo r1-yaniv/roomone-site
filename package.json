@@ -1,0 +1,11 @@
+{
+  "name": "roomone-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RoomOne Ventures marketing site — static, access-key locked, served from docs/ by GitHub Pages",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "python3 -m http.server 8765 --directory docs"
+  },
+  "engines": { "node": ">=18" }
+}

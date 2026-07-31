@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{TITLE}}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="RoomOne Ventures" />
+    <meta name="theme-color" content="#f6f3eb" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v={{V_CSS}}" />
+  </head>
+  <body class="is-locked">
+    <!-- Page content lives in the encrypted payload below and is inserted here on unlock. -->
+    <div id="site" hidden></div>
+
+    <div class="gate" id="gate" hidden>
+      <div class="gate__panel">
+        <a class="logo" href="#" aria-label="RoomOne Ventures">
+          {{LOGO_MARK}}
+          <span class="logo__words">
+            <span class="logo__main">ROOMONE</span>
+            <span class="logo__sub">VENTURES</span>
+          </span>
+        </a>
+
+        <p class="kicker">Pre-release</p>
+        <h1 class="gate__title">This site isn't public yet.</h1>
+        <p class="gate__sub">RoomOne Ventures goes live shortly. Until then the pages are locked — enter the access key you were given to look around.</p>
+
+        <form class="gate__form" id="gate-form" novalidate>
+          <div class="gate__row">
+            <input
+              id="gate-input"
+              type="password"
+              name="access"
+              placeholder="Access key"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              aria-label="Access key"
+            />
+            <button class="btn btn--primary" type="submit">Enter {{ARROW_RIGHT}}</button>
+          </div>
+          <p class="gate__msg" id="gate-msg" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="gate__foot">No key? Write to <a href="mailto:hello@roomone.ventures">hello@roomone.ventures</a>.</p>
+      </div>
+    </div>
+
+    <script id="payload" type="application/json">{{PAYLOAD}}</script>
+    <script src="app.js?v={{V_APP}}"></script>
+    <script src="gate.js?v={{V_GATE}}"></script>
+  </body>
+</html>

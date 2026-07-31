@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830 818" fill="currentColor" role="img" aria-label="RoomOne Ventures">
+  <rect x="0" y="0" width="830" height="47"/>
+  <rect x="0" y="0" width="45" height="818"/>
+  <rect x="784" y="0" width="46" height="818"/>
+  <rect x="0" y="775" width="543" height="43"/>
+  <rect x="255" y="223" width="288" height="56"/>
+  <rect x="485" y="135" width="58" height="108"/>
+  <path d="M487 226L487 135L257 226Z"/>
+  <path fill-rule="evenodd" d="M384 270H543V818H384ZM504 530A30 30 0 1 1 444 530A30 30 0 1 1 504 530Z"/>
+</svg>
