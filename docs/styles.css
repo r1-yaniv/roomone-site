@@ -562,7 +562,35 @@ svg {
   gap: 40px;
 }
 
+/* The step cards climb from left to right, which leaves a notch of empty space
+   above the first two. The section's heading and intro live in that notch —
+   copy and diagram share one grid cell, exactly as in the mockup. */
+.flow__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.flow__stage > * {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.flow__copy {
+  align-self: start;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 620px;
+}
+
+.flow__copy .lead {
+  max-width: 590px;
+}
+
 .flow__track {
+  align-self: end;
+  min-height: 530px;
   display: flex;
   align-items: flex-end;
 }
@@ -1541,11 +1569,22 @@ html[data-scroll-dir="up"] [data-reveal]:not(.is-in) {
 }
 
 @media (max-width: 1080px) {
+  /* Not enough width for the staircase, so the copy goes back above the cards. */
+  .flow__stage {
+    display: block;
+  }
+
+  .flow__copy {
+    max-width: none;
+    margin-bottom: 40px;
+  }
+
   .flow__track {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
     align-items: stretch;
+    min-height: 0;
   }
 
   .step {
