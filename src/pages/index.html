@@ -174,17 +174,24 @@
         </a>
       </div>
 
-      <form class="form-card" data-reveal style="--d: 0.1s" data-contact-form>
+      <form
+        class="form-card"
+        data-reveal
+        style="--d: 0.1s"
+        data-contact-form
+        action="https://api.sheetmonkey.io/form/aGX24WFXK1ns2tFJYPA9Az"
+        method="post"
+      >
         <h3 class="form-card__title">Send us a message</h3>
 
         <div class="form-row">
           <label class="field">
             <span>Name</span>
-            <input type="text" name="name" placeholder="Jane Doe" autocomplete="name" required />
+            <input type="text" name="Name" placeholder="Jane Doe" autocomplete="name" required />
           </label>
           <label class="field">
             <span>Email</span>
-            <input type="email" name="email" placeholder="jane@company.com" autocomplete="email" required />
+            <input type="email" name="Email" placeholder="jane@company.com" autocomplete="email" required />
           </label>
         </div>
 
@@ -201,17 +208,17 @@
               <li><button class="select__opt" type="button" role="option" aria-selected="false" data-tone="partner" data-value="Potential partner"><i>{{HANDSHAKE}}</i> Potential partner</button></li>
               <li><button class="select__opt" type="button" role="option" aria-selected="false" data-value="Other"><i>{{DASHED}}</i> Other</button></li>
             </ul>
-            <input type="hidden" name="role" data-select-input />
+            <input type="hidden" name="Role" data-select-input />
           </div>
         </div>
 
         <label class="field">
           <span>Message</span>
-          <textarea name="message" placeholder="Where does it hurt? What should exist that doesn't?" required></textarea>
+          <textarea name="Message" placeholder="Where does it hurt? What should exist that doesn't?" required></textarea>
         </label>
 
-        <button class="btn btn--primary" type="submit">{{SEND}} Send message</button>
-        <p class="form-note" data-form-note>Sending opens your mail app addressed to hello@roomone.ventures.</p>
+        <button class="btn btn--primary" type="submit">{{SEND}} <span data-submit-label>Send message</span></button>
+        <p class="form-note" data-form-note>We read every message ourselves. No newsletter, no sequence.</p>
       </form>
     </div>
   </section>

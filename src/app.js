@@ -258,37 +258,60 @@ window.R1 = (function () {
     });
   }
 
-  /* No backend on GitHub Pages: hand the message to the visitor's mail client.
-     Swap this for a form endpoint (Formspree, Basin, a Worker) when there is one. */
+  /* Submissions go to the Sheet Monkey endpoint on the form's action, which
+     appends a row to the Google Sheet. Posted with fetch so the visitor stays
+     on the page; if that is blocked, fall back to a normal form post, which
+     always gets through but navigates away to Sheet Monkey's confirmation. */
   function initContactForm() {
     var form = document.querySelector("[data-contact-form]");
     if (!form) return;
 
     var note = form.querySelector("[data-form-note]");
+    var submit = form.querySelector('button[type="submit"]');
+    var submitLabel = submit ? submit.querySelector("[data-submit-label]") : null;
+    var sending = false;
 
-    form.addEventListener("submit", function (event) {
+    function setNote(text) {
+      if (note) note.textContent = text;
+    }
+
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
+      if (sending) return;
 
-      var data = new FormData(form);
-      var name = (data.get("name") || "").toString().trim();
-      var email = (data.get("email") || "").toString().trim();
-      var role = (data.get("role") || "").toString().trim();
-      var message = (data.get("message") || "").toString().trim();
+      if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
 
-      var subject = "RoomOne enquiry — " + (name || "website");
-      var body =
-        "Name: " + name + "\n" +
-        "Email: " + email + "\n" +
-        "I am a: " + (role || "—") + "\n\n" +
-        message + "\n";
+      sending = true;
+      if (submit) submit.disabled = true;
+      if (submitLabel) submitLabel.textContent = "Sending…";
+      setNote("Sending your message…");
 
-      window.location.href =
-        "mailto:hello@roomone.ventures?subject=" +
-        encodeURIComponent(subject) +
-        "&body=" +
-        encodeURIComponent(body);
+      try {
+        var response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
 
-      if (note) note.textContent = "Opening your mail app… if nothing happens, write to hello@roomone.ventures.";
+        if (!response.ok) throw new Error("HTTP " + response.status);
+
+        form.reset();
+        var chosen = form.querySelector("[data-select-value]");
+        if (chosen) chosen.textContent = "Select one…";
+        var chooser = form.querySelector("[data-select-btn]");
+        if (chooser) chooser.removeAttribute("data-chosen");
+
+        if (submitLabel) submitLabel.textContent = "Message sent";
+        setNote("Thank you — we've got it, and one of us will come back to you personally.");
+      } catch (err) {
+        // Cross-origin or offline: let the browser post the form itself.
+        setNote("Finishing up…");
+        form.removeAttribute("data-contact-form");
+        form.submit();
+        return;
+      } finally {
+        sending = false;
+      }
     });
   }
 

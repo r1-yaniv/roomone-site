@@ -58,7 +58,7 @@ robots.txt disallows everything and every page sends noindex, so nothing is inde
 
 ## Notes for launch
 
-- The contact form has no backend. Submitting composes a mail to hello@roomone.ventures in the visitor's mail client. Swap initContactForm in src/app.js for a real endpoint (Formspree, Basin, a Cloudflare Worker) when there is one.
+- The contact form posts to Sheet Monkey, which appends a row to the Google Sheet behind it. The endpoint is the form's action attribute in src/pages/index.html; the submit handler in src/app.js reads it from there, so changing sheets is a one-line edit. Field names are Name, Email, Role and Message, and Sheet Monkey matches those to the sheet's column headers — rename the fields if the headers ever change. Submissions go through fetch so the visitor stays on the page; if that is ever blocked the handler falls back to a normal form post, which lands on Sheet Monkey's own confirmation page instead.
 - The hero photograph is from Unsplash. Replace assets/hero-room.jpg with a RoomOne photograph when one exists — the CSS crops to a wide band, so a landscape original works best.
 - The founder headshots carry a small RoomOne watermark baked into the source files. Unwatermarked versions would look cleaner behind the name plate.
 - The two partner cards are deliberately anonymous silhouettes, as in the mockup.
