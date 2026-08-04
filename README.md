@@ -2,7 +2,7 @@
 
 Static site built from the Pencil mockup in Marketing/Website/r1-site.pen. No framework, no dependencies — plain HTML, CSS and JavaScript, built by one Node script and served by GitHub Pages out of the docs/ folder.
 
-Home, How it works, About us and Contact are one continuous scrolling page (index.html), matching the four frames numbered 1 in the mockup. FAQ, Our story and Admin are separate pages, matching frames 2, 3 and 4. Sections reveal as you scroll down and hide again as you scroll back up.
+Home, How it works, About us, FAQ and Contact are one continuous scrolling page (index.html), matching the five frames numbered 1 in the mockup. Admin is the only separate page, matching frame 2. Scroll reveals are deliberately limited to the hero, the how-it-works diagram and the closing band.
 
 The whole site is locked behind an access key until launch. See "How the lock works" below — it is not a cosmetic overlay.
 

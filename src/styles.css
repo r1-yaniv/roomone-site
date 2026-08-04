@@ -532,11 +532,6 @@ svg {
 
 .section {
   padding-block: 96px 104px;
-  border-top: 1px solid var(--line);
-}
-
-.section--flush {
-  border-top: 0;
 }
 
 .section__head {
@@ -559,12 +554,12 @@ svg {
 .flow {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 52px;
 }
 
-/* The step cards climb from left to right, which leaves a notch of empty space
-   above the first two. The section's heading and intro live in that notch —
-   copy and diagram share one grid cell, exactly as in the mockup. */
+/* The step cards grow around one horizontal axis, which leaves a notch of empty
+   space above the first two. The section's heading lives in that notch — copy and
+   diagram share one grid cell, exactly as in the mockup. */
 .flow__stage {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -588,11 +583,15 @@ svg {
   max-width: 590px;
 }
 
+/* Cards are centred on a common axis — their heights grow up and down from it,
+   which is what puts the connectors dead centre. The margin keeps the third
+   card's top corner clear of the heading, which runs over it. */
 .flow__track {
   align-self: end;
-  min-height: 530px;
+  margin-top: 68px;
+  min-height: 375px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .step {
@@ -612,6 +611,16 @@ svg {
 .step:hover {
   border-color: var(--line-strong);
   transform: translateY(-2px);
+}
+
+/* Path B is the outcome the whole diagram points at, so it carries the accent. */
+.step--accent {
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+}
+
+.step--accent:hover {
+  border-color: var(--accent);
 }
 
 .step__num {
@@ -644,7 +653,6 @@ svg {
   display: flex;
   align-items: center;
   gap: 0;
-  margin-bottom: 42px;
   color: var(--line-strong);
 }
 
@@ -667,13 +675,15 @@ svg {
   height: 100%;
 }
 
+/* Two 170px cards and this gap are what set the track's height, so the fork's
+   viewBox in the markup is measured against the same 375px. */
 .flow__outcomes {
   flex: 0 1 224px;
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 80px;
+  justify-content: center;
+  gap: 35px;
 }
 
 .flow__outcomes .step {
@@ -778,60 +788,6 @@ svg {
   line-height: 1.2;
 }
 
-.founder__bio {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--fg-muted);
-}
-
-/* ---------- partners ---------- */
-
-.partners {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 328px));
-  gap: 32px;
-}
-
-.partner-card {
-  display: flex;
-  flex-direction: column;
-  aspect-ratio: 328 / 400;
-  background: var(--inset);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-}
-
-.partner-card__sil {
-  flex: 1;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  color: var(--line-strong);
-}
-
-.partner-card__info {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  padding: 0 20px 28px;
-}
-
-.partner-card__name {
-  font-family: var(--font-mono);
-  font-size: 16.5px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  line-height: 1;
-}
-
-.partner-card__role {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  color: var(--fg-muted);
-}
-
 .tag {
   display: inline-flex;
   align-items: center;
@@ -854,7 +810,6 @@ svg {
   gap: 88px;
   align-items: center;
   padding-block: 96px 110px;
-  border-top: 1px solid var(--line);
 }
 
 .contact__intro {
@@ -1071,12 +1026,78 @@ svg {
   color: var(--fg-subtle);
 }
 
+/* Empty until app.js writes a status into it — otherwise the card's flex gap
+   leaves dead space under the button. */
+.form-note:empty {
+  display: none;
+}
+
 /* ---------- bands ---------- */
 
+/* Section separator: fades out at both ends rather than running edge to edge,
+   so the break reads as a pause instead of a border. */
+.rule {
+  height: 2px;
+  margin: 0;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
 .band {
+  position: relative;
   background: var(--accent-deep);
   color: var(--on-deep);
   padding-block: 104px;
+}
+
+/* The mark sits astride the cream/green seam — half on each — with the chevron
+   above it on the cream side. bottom:100% puts the stack's base on the seam;
+   the translate pushes half the badge down over the band. */
+.band__top {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, 30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--fg-subtle);
+  transition: color 0.25s var(--ease);
+}
+
+.band__top:hover {
+  color: var(--fg);
+}
+
+.band__top svg {
+  transition: transform 0.25s var(--ease);
+}
+
+.band__top:hover svg {
+  transform: translateY(-3px);
+}
+
+/* The mark is smaller inside the badge than in the nav lockup — 26px leaves
+   the circle enough air to read as a badge rather than a cropped logo. */
+.band__mark .logo__mark {
+  width: 26px;
+  height: 25.6px;
+}
+
+.band__mark {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--on-accent);
+  transition: background-color 0.25s var(--ease);
+}
+
+.band__top:hover .band__mark {
+  background: var(--accent-deep);
 }
 
 .band__inner {
@@ -1097,34 +1118,6 @@ svg {
   gap: 40px;
 }
 
-.band-light {
-  padding-block: 72px;
-  border-top: 1px solid var(--line);
-}
-
-.band-light__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.band-light h3 {
-  font-family: var(--font-heading);
-  font-size: clamp(26px, 2.4vw, 34px);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-}
-
-.band-light p {
-  margin-top: 10px;
-  font-size: 16px;
-  color: var(--fg-muted);
-  max-width: 560px;
-}
-
 /* ---------- footer ---------- */
 
 .footer {
@@ -1132,10 +1125,13 @@ svg {
   color: var(--on-deep);
 }
 
+/* The closing band and the footer are both deep green, so the footer needs its
+   own rule to separate them — same treatment as the bottom bar's. */
 .footer__top {
   display: flex;
   gap: 48px;
   padding-block: 72px 60px;
+  border-top: 1px solid var(--deep-line);
 }
 
 .footer__brand {
@@ -1235,18 +1231,7 @@ svg {
   color: var(--on-deep-muted);
 }
 
-/* ---------- sub pages ---------- */
-
-.page-head {
-  padding-block: calc(var(--nav-h) + 88px) 56px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.page-head .lead {
-  max-width: 720px;
-}
+/* ---------- faq ---------- */
 
 .faq-list {
   border-top: 1px solid var(--line);
@@ -1284,57 +1269,7 @@ svg {
   max-width: 1000px;
 }
 
-.story {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  gap: 88px;
-  padding-bottom: 96px;
-}
-
-.story__body p {
-  font-size: clamp(17px, 1.4vw, 20px);
-  line-height: 1.55;
-}
-
-.story__body p + p {
-  margin-top: 24px;
-}
-
-.beats {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  padding-top: 8px;
-}
-
-.beat {
-  display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  gap: 16px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-}
-
-.beat__num {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--accent);
-}
-
-.beat__title {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-}
-
-.beat__desc {
-  margin-top: 8px;
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--fg-muted);
-}
+/* ---------- admin ---------- */
 
 .admin-page {
   min-height: 100svh;
@@ -1562,10 +1497,6 @@ html[data-scroll-dir="up"] [data-reveal]:not(.is-in) {
   .footer__cols {
     gap: 56px;
   }
-
-  .story {
-    gap: 48px;
-  }
 }
 
 @media (max-width: 1080px) {
@@ -1584,6 +1515,7 @@ html[data-scroll-dir="up"] [data-reveal]:not(.is-in) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
     align-items: stretch;
+    margin-top: 0;
     min-height: 0;
   }
 
@@ -1608,11 +1540,6 @@ html[data-scroll-dir="up"] [data-reveal]:not(.is-in) {
 
   .contact {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .story {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 40px;
   }
 }
 
@@ -1751,10 +1678,6 @@ html[data-scroll-dir="up"] [data-reveal]:not(.is-in) {
     gap: 10px;
   }
 
-  .page-head {
-    padding-block: calc(var(--nav-h) + 56px) 40px;
-  }
-
   .faq-item {
     grid-template-columns: minmax(0, 1fr);
     gap: 10px;
@@ -1763,11 +1686,6 @@ html[data-scroll-dir="up"] [data-reveal]:not(.is-in) {
 
   .faq-item__idx {
     padding-top: 0;
-  }
-
-  .band-light__inner {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
 

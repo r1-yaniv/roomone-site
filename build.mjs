@@ -36,15 +36,13 @@ const icon = (body, size = 16, extra = "") =>
 
 const LOGO_MARK = `<svg class="logo__mark" viewBox="0 0 830 818" fill="currentColor" aria-hidden="true"><rect x="0" y="0" width="830" height="47"/><rect x="0" y="0" width="45" height="818"/><rect x="784" y="0" width="46" height="818"/><rect x="0" y="775" width="543" height="43"/><rect x="255" y="223" width="288" height="56"/><rect x="485" y="135" width="58" height="108"/><path d="M487 226L487 135L257 226Z"/><path fill-rule="evenodd" d="M384 270H543V818H384ZM504 530A30 30 0 1 1 444 530A30 30 0 1 1 504 530Z"/></svg>`;
 
-const SILHOUETTE = `<svg width="150" height="160" viewBox="0 0 150 160" fill="currentColor" aria-hidden="true"><circle cx="75" cy="52" r="34"/><path d="M75 96c30 0 52 21 52 47v17H23v-17c0-26 22-47 52-47Z"/></svg>`;
-
 const tokens = {
   LOGO_MARK,
-  SIL: SILHOUETTE,
   ARROW_RIGHT: icon('<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>'),
   ARROW_LEFT: icon('<path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>'),
   CHEVRON_RIGHT: icon('<path d="m9 18 6-6-6-6"/>'),
   CHEVRON_DOWN: icon('<path d="m6 9 6 6 6-6"/>', 18),
+  CHEVRON_UP: icon('<path d="m18 15-6-6-6 6"/>', 28),
   MAIL: icon(
     '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-9.1 5.8a2 2 0 0 1-2.2 0L2 7"/>',
     22
@@ -109,8 +107,6 @@ function encrypt(plaintext) {
 
 const pages = [
   { file: "index.html", title: "RoomOne Ventures — the embedded venture firm", chrome: true },
-  { file: "faq.html", title: "FAQ — RoomOne Ventures", chrome: true },
-  { file: "team.html", title: "Our story — RoomOne Ventures", chrome: true },
   { file: "admin.html", title: "Admin — RoomOne Ventures", chrome: false },
 ];
 
